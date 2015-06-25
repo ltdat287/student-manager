@@ -17,7 +17,7 @@
         }
         label {
             float: left;
-            width: 100px;
+            width: 200px;
         }
 
         input {
