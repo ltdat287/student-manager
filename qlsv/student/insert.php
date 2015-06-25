@@ -95,8 +95,8 @@ if (isset($_POST['ok'])) {
         <label class="control-label col-sm-2">Gioi tinh</label>
 
         <div class="col-sm-10">
-            Nam<input type="radio" name="gender" value="1"/>
-            Nu<input type="radio" name="gender" value="2"/>
+            <label class="radio-inline"><input type="radio" name="gender" value="1"/>Nam</label>
+            <label class="radio-inline"><input type="radio" name="gender" value="2"/>Nu</label>
     <span class="error">
     <?php echo isset($errorgender) ? $errorgender : ""; ?>
     </span>
