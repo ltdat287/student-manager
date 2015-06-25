@@ -1,6 +1,15 @@
 <?php
-require '../common/header.php';
-require '../helpers/connect.php';
+require('../common/header.php');
+require('../helpers/connect.php');
+?>
+<h1> Trang sua thong tin sinh vien</h1>
+<?php
+$id = $_GET['id'];
+$connect = new Connect();
+$connect->connect_db();
+$sql = "SELECT * FROM sinhvien WHERE id=$id";
+$query = mysql_query($sql);
+$data = mysql_fetch_assoc($query);
 
 $fullname = $email = $address = $phone = $gender = '';
 
@@ -35,53 +44,62 @@ if (isset($_POST['ok'])) {
     } else {
         $gender = $_POST['gender'];
     }
-    //insert database
+    //update database
     if ($fullname && $email && $address && $phone && $gender) {
 
-        $connect = new connect();
-        $connect->connect_db();
-        $sql = "INSERT INTO sinhvien(fullname,email,address,phone,gender) VALUES('" . $fullname . "','" . $email . "','" . $address . "','" . $phone . "','" . $gender . "')";
-        mysql_query($sql);
-        echo "<h2>Them thanh cong</h2>";
+        $update = "UPDATE sinhvien SET fullname='".$fullname."',
+                                          email='".$email."',
+                                          address='".$address."',
+                                          phone='".$phone."',
+                                          gender='".$gender."' WHERE id='".$id."'";
+        mysql_query($update);
+        echo "<h2>Sua thanh cong</h2>";
+        header('location:list.php');
     } else {
-        echo "<h2>Khong thanh cong</h2>";
+        echo "<h2>Sua khong thanh cong</h2>";
     }
 }
 ?>
-<form action="insert.php" method="post">
+
+<form action="" method="post">
     <label>Ho va Ten</label>
-    <input type="text" name="fullname" value=""/>
+    <input type="text" name="fullname" value="<?php echo $data['fullname']; ?>"/>
     <span class="error">
     <?php echo isset($errorFullname) ? $errorFullname : ""; ?>
     </span>
     <br/>
     <label>Email</label>
-    <input type="text" name="email" value=""/>
+    <input type="text" name="email" value="<?php echo $data['email']; ?>"/>
     <span class="error">
     <?php echo isset($errorEmail) ? $errorEmail : ""; ?>
     </span>
     <br/>
-    <label>Que Quan</label>
-    <input type="text" name="address" value=""/>
+    <label>Que quan</label>
+    <input type="text" name="address" value="<?php echo $data['address']; ?>"/>
     <span class="error">
     <?php echo isset($errorAddress) ? $errorAddress : ""; ?>
     </span>
     <br/>
-    <label>Dien Thoai</label>
-    <input type="text" name="phone" value=""/>
+    <label>So dien thoai</label>
+    <input type="text" name="phone" value="<?php echo $data['phone']; ?>"/>
     <span class="error">
     <?php echo isset($errorphone) ? $errorphone : ""; ?>
     </span>
     <br/>
     <label>Gioi tinh</label>
-    Nam<input type="radio" name="gender" value="1"/>
-    Nu<input type="radio" name="gender" value="2"/>
+    Nam<input type="radio" name="gender" value="1" <?php if ($data['gender'] == 1) {
+        echo 'checked';
+    } ?>/>
+    Nu<input type="radio" name="gender" value="2" <?php if ($data['gender'] == 2) {
+        echo 'checked';
+    } ?>/>
     <span class="error">
     <?php echo isset($errorgender) ? $errorgender : ""; ?>
     </span>
     <br/>
     <label>&nbsp</label>
-    <input type="submit" name="ok" value="Them moi"/>
+    <input type="submit" name="ok" value="Sua"/>
 </form>
-<?php require('../common/footer.php');
+<?php
+require('../common/footer.php');
 ?>

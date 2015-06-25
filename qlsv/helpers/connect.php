@@ -4,7 +4,7 @@ class Connect
 {
     private $host = 'localhost';
     private $user = 'root';
-    private $pass = '';
+    private $pass = '123456';
     private $db   = 'qlsv';
 
     public function connect_db()
@@ -13,7 +13,7 @@ class Connect
         mysql_select_db($this->db, $connect);
     }
 
-    public function query($sql = '')
+    public function query($sql)
     {
         $query = mysql_query($sql);
         $data = array();

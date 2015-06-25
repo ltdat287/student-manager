@@ -1,5 +1,9 @@
-<meta charset="utf-8">
-<h1>Trang xoa sinh vien</h1>
+<?php
+require('../common/header.php');
+require('../helpers/connect.php');
+?>
+
+    <h1>Trang xoa sinh vien</h1>
 <?php
 /**
  * Created by PhpStorm.
@@ -9,9 +13,10 @@
  */
 $id = $_GET['id'];
 echo $id;
-$connect = mysql_connect("localhost", "root", "") or die("server disconnect");
-mysql_select_db("qlsv", $connect);
-$sql = "DELETE FROM sinhvien WHERE id='" . $id . "'";
+$connect = new Connect();
+$connect->connect_db();
+$sql = "DELETE FROM sinhvien WHERE id=$id";
 mysql_query($sql);
 
 header("location:list.php");
+require('../common/footer.php');

@@ -15,6 +15,18 @@
             color:#000;
             font:12px Tahoma, Geneva, sans-serif;
         }
+        label {
+            float: left;
+            width: 100px;
+        }
+
+        input {
+            margin-bottom: 5px;
+        }
+
+        .error {
+            color: red;
+        }
     </style>
     <script type="text/javascript">
         function check(){
