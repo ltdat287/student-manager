@@ -1,0 +1,23 @@
+a:hover{
+    color:#F30
+}
+ul li{
+    margin-bottom:3px;
+}
+ul li a{
+    text-decoration:none;
+    color:#000;
+    font:12px Tahoma, Geneva, sans-serif;
+}
+label {
+    float: left;
+    width: 200px;
+}
+
+input {
+    margin-bottom: 5px;
+}
+
+.error {
+    color: red;
+}

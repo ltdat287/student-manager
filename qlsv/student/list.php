@@ -7,46 +7,52 @@ $connect->connect_db();
 $data = $connect->query('SELECT * FROM sinhvien');
 ?>
 
-<a href="/student/qlsv/student/insert.php">Add</a>
-
-<table border="1" width="700">
-    <tr>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Address</td>
-        <td>Phone</td>
-        <td>Gender</td>
-        <td>Class</td>
-        <td>Choose Class</td>
-        <td>Edit</td>
-        <td>Delete</td>
-    </tr>
-
-    <?php
-    foreach ($data as $item)
-    {
-        ?>
+<h1 class="page-header">Danh sach sinh vien</h1>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
         <tr>
-            <td><?php echo (isset($item['fullname'])) ? $item['fullname'] : '' ?></td>
-            <td><?php echo (isset($item['email'])) ? $item['email'] : '' ?></td>
-            <td><?php echo (isset($item['address'])) ? $item['address'] : '' ?></td>
-            <td><?php echo (isset($item['phone'])) ? $item['phone'] : '' ?></td>
-            <td><?php echo (isset($item['gender']) && $item['gender'] == 1) ? 'Male' : 'Fmale' ?></td>
-            <td><?php echo (isset($item['class'])) ? $item['class'] : '' ?></td>
-            <td>
-                <a href="/student/qlsv/student/chooseclass.php?id=<?php echo $item['id'] ?>">Choose</a>
-            </td>
-            <td>
-                <a href="/student/qlsv/student/edit.php?id=<?php echo $item['id'] ?>">Edit</a>
-            </td>
-            <td>
-                <a href="/student/qlsv/student/delete.php?id=<?php echo $item['id'] ?>">Delete</a>
-            </td>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Class</th>
+            <th>Choose Class</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
-        <?php
-    }
-    ?>
+        </thead>
+        <tbody>
 
-</table>
+        <?php
+        foreach ($data as $item) {
+            ?>
+            <tr>
+                <td><?php echo (isset($item['fullname'])) ? $item['fullname'] : '' ?></td>
+                <td><?php echo (isset($item['email'])) ? $item['email'] : '' ?></td>
+                <td><?php echo (isset($item['address'])) ? $item['address'] : '' ?></td>
+                <td><?php echo (isset($item['phone'])) ? $item['phone'] : '' ?></td>
+                <td><?php echo (isset($item['gender']) && $item['gender'] == 1) ? 'Male' : 'Fmale' ?></td>
+                <td><?php echo (isset($item['class'])) ? $item['class'] : '' ?></td>
+                <td>
+                    <a href="../student/chooseclass.php?id=<?php echo $item['id'] ?>">Choose</a>
+                </td>
+                <td>
+                    <a href="../student/edit.php?id=<?php echo $item['id'] ?>">Edit</a>
+                </td>
+                <td>
+                    <a href="../student/delete.php?id=<?php echo $item['id'] ?>">Delete</a>
+                </td>
+            </tr>
+        <?php
+        }
+        ?>
+
+        </tbody>
+    </table>
+</div>
+
+    <a href="../student/insert.php">Add</a>
 
 <?php require '../common/footer.php' ?>
