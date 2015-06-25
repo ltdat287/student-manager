@@ -42,5 +42,6 @@ $data = $connect->query('SELECT * FROM sinhvien');
     ?>
 
 </table>
+<a href=""
 
 <?php require '../common/footer.php' ?>
