@@ -2,7 +2,7 @@
 require('../common/header.php');
 require('../helpers/connect.php');
 ?>
-    <h1>Trang them moi lop hoc</h1>
+    <h2 class="page-header">Trang them moi lop hoc</h2>
 <?php
 if (isset($_POST['them'])) {
     $class = $soluong = "";
@@ -30,16 +30,18 @@ if (isset($_POST['them'])) {
     }
 }
 ?>
-    <form action="addclass.php" method="post">
+    <form action="addclass.php" method="post" role="form">
+        <div class="form-group">
         <label>Ten lop</label>
-        <input type="text" name="class" value=""/>
+        <input class="form-control" type="text" name="class" value=""/>
         <span class="error"><?php echo isset($errorclass) ? $errorclass : "" ?></span>
-        <br/>
+        </div>
+        <div class="form-group">
         <label>So hoc sinh</label>
-        <input type="number" name="soluong" value=""/>
+        <input class="form-control" type="number" name="soluong" value=""/>
         <span class="error"><?php echo isset($errorsoluong) ? $errorsoluong : "" ?></span>
-        <br/>
-        <input type="submit" name="them" value="Them lop"/>
+        </div>
+        <input type="submit" name="them" value="Them lop" class="btn"/>
     </form>
 <?php
 require('../common/footer.php');

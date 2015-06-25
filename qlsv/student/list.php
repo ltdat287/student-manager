@@ -53,6 +53,6 @@ $data = $connect->query('SELECT * FROM sinhvien');
     </table>
 </div>
 
-    <a href="../student/insert.php">Add</a>
+    <a href="../student/insert.php">Them sinh vien</a>
 
 <?php require '../common/footer.php' ?>

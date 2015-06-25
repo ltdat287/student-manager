@@ -48,40 +48,64 @@ if (isset($_POST['ok'])) {
     }
 }
 ?>
-<form action="insert.php" method="post">
-    <label>Ho va Ten</label>
-    <input type="text" name="fullname" value=""/>
+
+<h2 class="page-header">Them moi sinh vien</h2>
+<form action="insert.php" method="post" role="form" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-sm-2">Ho va Ten</label>
+
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="fullname" value=""/>
     <span class="error">
     <?php echo isset($errorFullname) ? $errorFullname : ""; ?>
     </span>
-    <br/>
-    <label>Email</label>
-    <input type="text" name="email" value=""/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2">Email</label>
+
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="email" value=""/>
     <span class="error">
     <?php echo isset($errorEmail) ? $errorEmail : ""; ?>
     </span>
-    <br/>
-    <label>Que Quan</label>
-    <input type="text" name="address" value=""/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2">Que Quan</label>
+
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="address" value=""/>
     <span class="error">
     <?php echo isset($errorAddress) ? $errorAddress : ""; ?>
     </span>
-    <br/>
-    <label>Dien Thoai</label>
-    <input type="text" name="phone" value=""/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2">Dien Thoai</label>
+
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="phone" value=""/>
     <span class="error">
     <?php echo isset($errorphone) ? $errorphone : ""; ?>
     </span>
-    <br/>
-    <label>Gioi tinh</label>
-    Nam<input type="radio" name="gender" value="1"/>
-    Nu<input type="radio" name="gender" value="2"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2">Gioi tinh</label>
+
+        <div class="col-sm-10">
+            Nam<input type="radio" name="gender" value="1"/>
+            Nu<input type="radio" name="gender" value="2"/>
     <span class="error">
     <?php echo isset($errorgender) ? $errorgender : ""; ?>
     </span>
-    <br/>
-    <label>&nbsp</label>
-    <input type="submit" name="ok" value="Them moi"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>&nbsp</label>
+        <input type="submit" name="ok" value="Them moi" class="btn"/>
+    </div>
 </form>
 <?php require('../common/footer.php');
 ?>

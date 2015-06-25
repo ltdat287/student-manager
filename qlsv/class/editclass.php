@@ -2,7 +2,7 @@
 require('../common/header.php');
 require('../helpers/connect.php');
 ?>
-    <h1> Trang sua thong tin lop</h1>
+    <h2 class="page-header"> Trang sua thong tin lop</h2>
 <?php
 $id = $_GET['id'];
 $connect = new Connect();
@@ -36,16 +36,18 @@ if (isset($_POST['them'])) {
 
 ?>
 
-    <form action="" method="post">
-        <label>Ten lop</label>
-        <input type="text" name="class" value="<?php echo $data['classname'] ?>"/>
+    <form action="" method="post" role="form">
+        <div class="form-group">
+        <label>Ten lop:</label>
+        <input class="form-control" type="text" name="class" value="<?php echo $data['classname'] ?>"/>
         <span class="error"><?php echo isset($errorclass) ? $errorclass : "" ?></span>
-        <br/>
-        <label>So hoc sinh</label>
-        <input type="number" name="soluong" value="<?php echo $data['soluong'] ?>"/>
+        </div>
+        <div class="form-group">
+        <label>So hoc sinh:</label>
+        <input class="form-control" type="number" name="soluong" value="<?php echo $data['soluong'] ?>"/>
         <span class="error"><?php echo isset($errorsoluong) ? $errorsoluong : "" ?></span>
-        <br/>
-        <input type="submit" name="them" value="Sua"/>
+        </div>
+        <input type="submit" name="them" value="Sua" class="btn"/>
     </form>
 <?php
 require('../common/footer.php');

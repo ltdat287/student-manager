@@ -7,33 +7,38 @@ $connect->connect_db();
 $data = $connect->query('SELECT * FROM class');
 ?>
 
-<a href="/student/qlsv/class/addclass.php">Add class</a>
+    <h1 class="page-header">Danh sach lop</h1>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name Class</th>
+                <th>Hoc sinh</th>
+                <th>Sua</th>
+                <th>Xoa</th>
+            </tr>
+            </thead>
+            <tbody>
 
-<table border="1" width="600">
-    <tr>
-        <td>Name Class</td>
-        <td>Hoc sinh</td>
-        <td>Sua</td>
-        <td>Xoa</td>
-    </tr>
+            <?php
+            foreach ($data as $item) {
+                ?>
+                <tr>
+                    <td><?php echo (isset($item['classname'])) ? $item['classname'] : '' ?></td>
+                    <td><?php echo (isset($item['soluong'])) ? $item['soluong'] : '' ?></td>
+                    <td>
+                        <a class="btn-link" href="/student/qlsv/class/editclass.php?id=<?php echo $item['id'] ?>">Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn-link" href="/student/qlsv/class/delete.php?id=<?php echo $item['id'] ?>">Delete</a>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
 
-    <?php
-    foreach ($data as $item) {
-        ?>
-        <tr>
-            <td><?php echo (isset($item['classname'])) ? $item['classname'] : '' ?></td>
-            <td><?php echo (isset($item['soluong'])) ? $item['soluong'] : '' ?></td>
-            <td>
-                <a href="/student/qlsv/class/editclass.php?id=<?php echo $item['id'] ?>">Edit</a>
-            </td>
-            <td>
-                <a href="/student/qlsv/class/delete.php?id=<?php echo $item['id'] ?>">Delete</a>
-            </td>
-        </tr>
-<?php
-}
-?>
-
-</table>
-
+            </tbody>
+        </table>
+    </div>
+    <a class="btn-link" href="/student/qlsv/class/addclass.php">Add class</a>
 <?php require '../common/footer.php' ?>

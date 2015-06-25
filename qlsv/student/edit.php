@@ -2,7 +2,7 @@
 require('../common/header.php');
 require('../helpers/connect.php');
 ?>
-<h1> Trang sua thong tin sinh vien</h1>
+    <h2 class="page-header"> Trang sua thong tin sinh vien</h2>
 <?php
 $id = $_GET['id'];
 $connect = new Connect();
@@ -47,11 +47,11 @@ if (isset($_POST['ok'])) {
     //update database
     if ($fullname && $email && $address && $phone && $gender) {
 
-        $update = "UPDATE sinhvien SET fullname='".$fullname."',
-                                          email='".$email."',
-                                          address='".$address."',
-                                          phone='".$phone."',
-                                          gender='".$gender."' WHERE id='".$id."'";
+        $update = "UPDATE sinhvien SET fullname='" . $fullname . "',
+                                          email='" . $email . "',
+                                          address='" . $address . "',
+                                          phone='" . $phone . "',
+                                          gender='" . $gender . "' WHERE id='" . $id . "'";
         mysql_query($update);
         echo "<h2>Sua thanh cong</h2>";
         header('location:list.php');
@@ -61,45 +61,68 @@ if (isset($_POST['ok'])) {
 }
 ?>
 
-<form action="" method="post">
-    <label>Ho va Ten</label>
-    <input type="text" name="fullname" value="<?php echo $data['fullname']; ?>"/>
-    <span class="error">
-    <?php echo isset($errorFullname) ? $errorFullname : ""; ?>
-    </span>
-    <br/>
-    <label>Email</label>
-    <input type="text" name="email" value="<?php echo $data['email']; ?>"/>
-    <span class="error">
-    <?php echo isset($errorEmail) ? $errorEmail : ""; ?>
-    </span>
-    <br/>
-    <label>Que quan</label>
-    <input type="text" name="address" value="<?php echo $data['address']; ?>"/>
-    <span class="error">
-    <?php echo isset($errorAddress) ? $errorAddress : ""; ?>
-    </span>
-    <br/>
-    <label>So dien thoai</label>
-    <input type="text" name="phone" value="<?php echo $data['phone']; ?>"/>
-    <span class="error">
-    <?php echo isset($errorphone) ? $errorphone : ""; ?>
-    </span>
-    <br/>
-    <label>Gioi tinh</label>
-    Nam<input type="radio" name="gender" value="1" <?php if ($data['gender'] == 1) {
-        echo 'checked';
-    } ?>/>
-    Nu<input type="radio" name="gender" value="2" <?php if ($data['gender'] == 2) {
-        echo 'checked';
-    } ?>/>
+    <form action="" method="post" role="form" class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Ho va Ten</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="fullname" value="<?php echo $data['fullname']; ?>"/>
+                <span class="error">
+                <?php echo isset($errorFullname) ? $errorFullname : ""; ?>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Email</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="email" value="<?php echo $data['email']; ?>"/>
+                <span class="error">
+                <?php echo isset($errorEmail) ? $errorEmail : ""; ?>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Que quan</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="address" value="<?php echo $data['address']; ?>"/>
+                <span class="error">
+                <?php echo isset($errorAddress) ? $errorAddress : ""; ?>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">So dien thoai</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="phone" value="<?php echo $data['phone']; ?>"/>
+                <span class="error">
+                <?php echo isset($errorphone) ? $errorphone : ""; ?>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Gioi tinh</label>
+
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="1" <?php if ($data['gender'] == 1) {
+                    echo 'checked';
+                } ?>/>Nam
+            </label>
+
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="2" <?php if ($data['gender'] == 2) {
+                    echo 'checked';
+                } ?>/>Nu
+            </label>
     <span class="error">
     <?php echo isset($errorgender) ? $errorgender : ""; ?>
     </span>
-    <br/>
-    <label>&nbsp</label>
-    <input type="submit" name="ok" value="Sua"/>
-</form>
+        </div>
+        <label class="control-label col-sm-2">&nbsp</label>
+        <input type="submit" name="ok" value="Sua" class="btn"/>
+    </form>
 <?php
 require('../common/footer.php');
 ?>

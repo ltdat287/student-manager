@@ -3,10 +3,10 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="student/list.php">List Student <span class="sr-only">(current)</span></a>
+                <li class="active"><a href="/student/qlsv/student/list.php">List Student <span class="sr-only">(current)</span></a>
                 </li>
                 <li><a href="javascript:void(0)">Quản lý sinh viên</a></li>
-                <li><a href="class/list.php">Quản lý lớp</a></li>
+                <li><a href="/student/qlsv/class/list.php">Quản lý lớp</a></li>
                 <li><a href="javascript:void(0)">Quản lý điểm</a></li>
                 <li><a href="javascript:void(0)">Quản lý tin tức</a></li>
             </ul>
